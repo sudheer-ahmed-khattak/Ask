@@ -1,0 +1,203 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body><title>Ask Sudheer</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Ask anything about Sudheer Ahmed Khattak – Senior Executive Assistant and Logistics & Operations professional.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: one centred conversation column — profile header, suggested questions, chat thread, composer pinned at the bottom */
+:root{
+  --bg:#f4f1ea; --panel:#fffdf8; --ink:#13213a; --mut:#5d6779; --line:#e3dccb;
+  --gold:#b88a1c; --gold2:#d9b45a; --teal:#11847a; --me:#13213a; --mefg:#fdf8ec;
+  --bot:#ffffff; --chip:#fbf6ea; --shadow:0 10px 30px rgba(19,33,58,.08);
+  --fd:"Fraunces",Georgia,"Times New Roman",serif; --fb:"Manrope",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#081221; --panel:#0e1b30; --ink:#eef2f8; --mut:#9fb0c7; --line:#1f3150;
+  --gold:#d9b45a; --gold2:#f2d27a; --teal:#38c9b9; --me:#d9b45a; --mefg:#0a1526;
+  --bot:#122441; --chip:#11223d; --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#081221; --panel:#0e1b30; --ink:#eef2f8; --mut:#9fb0c7; --line:#1f3150;
+  --gold:#d9b45a; --gold2:#f2d27a; --teal:#38c9b9; --me:#d9b45a; --mefg:#0a1526;
+  --bot:#122441; --chip:#11223d; --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.55}
+.app{max-width:760px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{padding-block:28px 18px;display:flex;gap:18px;align-items:center;border-bottom:1px solid var(--line)}
+.ph{width:76px;height:76px;border-radius:50%;flex:none;padding:3px;background:conic-gradient(var(--gold),var(--gold2),var(--teal),var(--gold))}
+.ph img{width:100%;height:100%;border-radius:50%;display:block;object-fit:cover;border:2px solid var(--bg)}
+.who{min-width:0}
+.who h1{font-family:var(--fd);font-weight:700;font-size:clamp(1.45rem,4.5vw,1.9rem);margin:0;line-height:1.15;text-wrap:balance}
+.who p{margin:4px 0 0;color:var(--mut);font-size:.93rem}
+.who p b{color:var(--gold);font-weight:700}
+.status{display:inline-flex;align-items:center;gap:7px;margin-top:8px;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px color-mix(in srgb,var(--teal) 22%,transparent)}
+.thread{flex:1;padding-block:22px 12px;display:flex;flex-direction:column;gap:14px}
+.msg{display:flex;gap:10px;align-items:flex-end;max-width:100%}
+.msg .av{width:30px;height:30px;border-radius:50%;flex:none;overflow:hidden;border:1.5px solid var(--gold)}
+.msg .av img{width:100%;height:100%;object-fit:cover;display:block}
+.bub{background:var(--bot);border:1px solid var(--line);border-radius:18px 18px 18px 6px;padding:12px 16px;box-shadow:var(--shadow);min-width:0;max-width:min(560px,85%)}
+.bub p{margin:0 0 8px}.bub p:last-child{margin:0}
+.bub ul{margin:6px 0 4px;padding-left:20px}.bub li{margin:3px 0}
+.bub b{color:var(--ink)} .bub .k{color:var(--gold);font-weight:700}
+.me{justify-content:flex-end}
+.me .bub{background:var(--me);color:var(--mefg);border-color:transparent;border-radius:18px 18px 6px 18px;box-shadow:none}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.links a,.links button{font:inherit;font-size:.85rem;font-weight:700;text-decoration:none;color:var(--ink);background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer}
+.links a:hover,.links button:hover{border-color:var(--gold)}
+.typing{display:inline-flex;gap:5px;padding:4px 2px}
+.typing span{width:7px;height:7px;border-radius:50%;background:var(--mut);animation:b 1s infinite}
+.typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}
+@keyframes b{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+.sugg{display:flex;flex-wrap:wrap;gap:8px;padding-block:4px 10px}
+@media (max-width:640px){.sugg{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:calc(-1 * max(16px,env(safe-area-inset-right,0px)))}.sugg::-webkit-scrollbar{display:none}.sugg button{flex:none}}
+.sugg button{font:inherit;font-size:.88rem;font-weight:600;color:var(--ink);background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;transition:border-color .15s,transform .15s}
+.sugg button:hover{border-color:var(--gold);transform:translateY(-1px)}
+.sugg button:focus-visible,.links a:focus-visible,.links button:focus-visible,#send:focus-visible,#q:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.composer{position:sticky;bottom:0;padding-block:12px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--bg) 70%,transparent)}
+.lbl{font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin:0 0 8px}
+form{display:flex;gap:10px;background:var(--panel);border:1.5px solid var(--line);border-radius:16px;padding:6px 6px 6px 16px;box-shadow:var(--shadow)}
+form:focus-within{border-color:var(--gold)}
+#q{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:inherit;font-size:1rem;outline:none}
+#send{border:0;border-radius:12px;background:var(--gold);color:#0a1526;font:inherit;font-weight:800;padding:10px 18px;cursor:pointer}
+.foot{font-size:.78rem;color:var(--mut);text-align:center;margin-top:10px}
+@media (prefers-reduced-motion:reduce){.typing span{animation:none}.sugg button{transition:none}}
+</style>
+
+<div class="app">
+  <header>
+    <div class="ph"><img id="pic" alt="Sudheer Ahmed Khattak"></div>
+    <div class="who">
+      <h1>Ask Sudheer</h1>
+      <p><b>Senior Executive Assistant</b> · Lead Administrative Specialist, Logistics</p>
+      <span class="status"><i></i>Replies instantly</span>
+    </div>
+  </header>
+
+  <main class="thread" id="thread" aria-live="polite"></main>
+
+  <div class="composer">
+    <p class="lbl">Popular questions</p>
+    <div class="sugg" id="sugg"></div>
+    <form id="f" autocomplete="off">
+      <label for="q" style="position:absolute;left:-9999px">Your question</label>
+      <input id="q" placeholder="Ask about experience, tools, availability…" maxlength="200">
+      <button id="send" type="submit">Ask</button>
+    </form>
+    <p class="foot">Answers come from Sudheer's own CV and portfolio · Portfolio projects use demo data</p>
+  </div>
+</div>
+
+<script>
+const PHOTO="data:image/jpeg;base64,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";
+const L={
+  notion:["Full portfolio","https://sudheer-ahmed-khattak.notion.site/Sudheer-Ahmed-Khattak-3f93f6340e9c81f88413f3bf135f84aa"],
+  linkedin:["LinkedIn","https://www.linkedin.com/in/sudheer-ahmed-khattak"],
+  github:["GitHub · 25 projects","https://github.com/sudheer-ahmed-khattak"],
+  site:["Portfolio website","https://sites.google.com/view/sudheer-ahmed"],
+  wa:["WhatsApp","https://wa.me/923315701649"]
+};
+// Knowledge base: every answer is taken from Sudheer's CV
+const KB=[
+ {id:"intro",chip:"Who is Sudheer?",k:["who is","about him","about sudheer","introduce","yourself","summary","overview","tell me","sudheer","profile","background"],
+  a:`<p>Sudheer is a <b>Senior Executive Assistant</b> with <span class="k">11+ years</span> across executive offices, board secretariats and large-scale operations in <b>Saudi Arabia and Pakistan</b>.</p><p>Today he supports the <b>Project Director and Project Senior Manager</b> at Al-Ayuni Limak (LAJV) on a NEOM infrastructure project. Before that he was <b>Secretary to the Joint Venture Board and the Deputy CEO</b>, and Lead Administrative Specialist in Logistics.</p>`,l:["notion","linkedin"]},
+ {id:"current",chip:"Current role?",k:["current","now","present","job","role","position","today","working","lajv","al-ayuni","limak"],
+  a:`<p><b>Senior Executive Assistant</b>, Al-Ayuni Limak Contracting (LAJV), Management Department, NEOM infrastructure project (Jan 2026 – present).</p><ul><li>Right hand to the Project Director and Project Senior Manager</li><li>Meetings, MOMs and action follow-up</li><li>Approvals through Oracle Fusion and DocuSign (contracts, IPCs, LCs)</li><li>Aconex correspondence with NEOM</li><li>KPI dashboards, management drivers and trips, senior visitors and TBM breakthrough ceremonies</li></ul>`},
+ {id:"years",chip:"Years of experience?",k:["years","how long","how many years","total experience","seniority","career history","timeline"],
+  a:`<p><span class="k">11+ years</span> in total:</p><ul><li><b>2026 – now</b> · Senior Executive Assistant, LAJV (NEOM)</li><li><b>2025</b> · JV Board & Deputy CEO Secretary, LAJV</li><li><b>2024</b> · Lead Administrative Specialist (Logistics) and Transportation & Facilities Administrator, LAJV</li><li><b>2018 – 2024</b> · Branch Coordinator → Operations Manager, pharmaceutical distribution, Pakistan</li><li><b>2015 – 2017</b> · Founder & Operations Manager, US outbound call centre</li></ul>`},
+ {id:"board",chip:"Board secretary experience?",k:["board","secretary","secretariat","deputy ceo","ceo","resolution","governance","minutes","jv board","joint venture"],
+  a:`<p>Throughout 2025 Sudheer was <b>Secretary to the Joint Venture Board and the Deputy CEO</b> at LAJV.</p><ul><li>Board papers, meeting calendar and MOMs</li><li>Resolutions and follow-up of open actions</li><li>Confidential correspondence and DocuSign sign-offs</li><li>Company ceremonies, National Day events and staff engagement</li><li>Visitor inductions, HSE training, induction cards and site access</li></ul>`},
+ {id:"exec",chip:"Executive support skills?",k:["executive","assistant","ea","pa","calendar","diary","travel","meeting","mom","schedule","support","office","priorities","agenda"],
+  a:`<p>Day to day, Sudheer runs the executive office end to end:</p><ul><li>Calendar, priorities and daily agenda for leadership</li><li>Meetings, agendas, MOMs and action trackers</li><li>Approvals and contract workflows in Oracle Fusion and DocuSign</li><li>Trips, drivers, hotels and senior visitor hospitality</li><li>VIP visits and TBM breakthrough ceremonies (guest lists, security, NEOM access)</li></ul>`},
+ {id:"approvals",chip:"Oracle / DocuSign / Aconex?",k:["oracle","fusion","docusign","aconex","approval","approvals","erp","ipc","lc","contract","correspondence","document control"],
+  a:`<p>Yes, all three are part of his daily work:</p><ul><li><b>Oracle Cloud / Fusion</b> · approval workflows</li><li><b>DocuSign</b> · contracts, IPCs and letters of credit</li><li><b>Aconex</b> · formal correspondence with NEOM as the employer</li></ul>`},
+ {id:"logistics",chip:"Logistics experience?",k:["logistics","operations","supply","fleet","transport","transportation","driver","drivers","vehicle","camp","camps","accommodation","facilities","catering","laundry","housekeeping","fuel","diesel","water"],
+  a:`<p>Logistics is Sudheer's second core track:</p><ul><li><b>Transportation & Facilities Administrator</b> (2024) · transport and facilities for a large project workforce: accommodation, catering, laundry and housekeeping</li><li><b>Lead Administrative Specialist, Logistics</b> (2024) · delivery-note records for water, diesel, gasoline and waste; driver and equipment rental timesheets; client visit observations at camps, dining and offices</li><li><b>Pharma distribution, Pakistan</b> (2018 – 2024) · inventory, dispatch, delivery fleet and a staff accommodation building</li></ul>`},
+ {id:"recon",chip:"Invoice reconciliation?",k:["invoice","invoices","reconcile","reconciliation","delivery note","timesheet","timesheets","rental","pr","payment","verify","audit"],
+  a:`<p>Yes. As Lead Administrative Specialist he <b>reconciled supplier invoices against delivery notes and timesheets</b>, verified driver and equipment rental timesheets, and checked rental and payment request (PR) invoices before approval.</p><p>He has also turned this into a Python automation demo that flags over-billing, wrong rates and duplicates automatically.</p>`},
+ {id:"pharma",chip:"Pakistan experience?",k:["pakistan","pharma","pharmaceutical","premier","attock","wah","branch","distribution","operations manager","inventory","dispatch"],
+  a:`<p>At Premier Agency (pharmaceutical distribution):</p><ul><li><b>Branch Coordinator</b>, Attock · 2018 – 2020</li><li><b>Operations Manager</b>, Wah · 2021 – 2024</li></ul><p>He ran inventory, dispatch, the delivery fleet and transport logistics, and managed a staff accommodation building with security and vehicles.</p>`},
+ {id:"callcentre",chip:"Business / founder experience?",k:["founder","call","centre","center","bpo","alpha","sales","lead generation","entrepreneur","business","start"],
+  a:`<p>From 2015 to 2017 Sudheer <b>founded and ran Alpha BPO</b>, a US outbound call centre in Pakistan, running auto-insurance and solar lead-generation campaigns and tracking agent performance and sales.</p>`},
+ {id:"tools",chip:"Which tools does he use?",k:["tools","software","systems","skills","technical","microsoft","office","sharepoint","teams","outlook","avaya","ai"],
+  a:`<ul><li><b>Approvals & ERP</b> · Oracle Cloud / Fusion, DocuSign</li><li><b>Document control</b> · Aconex, SharePoint</li><li><b>Reporting</b> · Power BI, advanced Excel & VBA, SQL, PowerPoint</li><li><b>Collaboration</b> · Microsoft 365, Teams, Outlook, Avaya, Notion, AI tools</li></ul>`},
+ {id:"data",chip:"Power BI / Excel / SQL?",k:["power bi","powerbi","excel","vba","sql","dashboard","dashboards","report","reporting","kpi","data","analytics","python","pivot"],
+  a:`<p>Yes. Sudheer builds the reports leadership uses:</p><ul><li><b>Power BI</b> KPI dashboards</li><li><b>Excel</b> trackers with formulas, drop-downs, alerts and VBA</li><li><b>SQL</b> reporting databases</li><li><b>PowerPoint</b> executive decks</li></ul><p>His portfolio has <span class="k">25 projects</span> across these tools, built with demo data.</p>`,l:["github","notion"]},
+ {id:"portfolio",chip:"See his portfolio",k:["portfolio","projects","project","work samples","samples","github","examples","demo","25"],
+  a:`<p><span class="k">25 portfolio projects</span> in four groups: Executive Office & Board, Workforce & Manpower, Procurement · Logistics · Facilities, and Documents · Site · Events. Each comes with the main file, a PDF and a preview. All data is fictional.</p>`,l:["notion","github","site"]},
+ {id:"certs",chip:"Certifications?",k:["certification","certifications","certificate","certified","course","courses","training","fire","warden","hr","diploma","qualification"],
+  a:`<ul><li><b>Fire Warden Level 2</b> (theory & practical) · IBHSE-US · valid to April 2027</li><li><b>International HRM</b>, <b>International HR Operations</b>, <b>Manpower Planning & Recruitment</b> · UniAthena / CIQ UK · 2025</li><li>Diplomas and courses in operations & project management, procurement & supply chain, transportation & logistics, and EHS</li></ul>`},
+ {id:"edu",chip:"Education?",k:["education","degree","bachelor","university","study","studied","commerce","graduate"],
+  a:`<p><b>Bachelor's in Commerce</b>, plus the professional certifications and diplomas listed in his profile.</p>`},
+ {id:"lang",chip:"Languages?",k:["language","languages","arabic","english","urdu","pashto","speak","fluent"],
+  a:`<ul><li><b>English</b> · fluent</li><li><b>Arabic</b> · intermediate</li><li><b>Urdu & Pashto</b> · native</li></ul>`},
+ {id:"avail",chip:"Is he available?",k:["available","availability","notice","join","joining","start","when","immediately","iqama","transfer","transferable","visa","sponsorship"],
+  a:`<p><b>Yes, available immediately.</b> His Iqama is <b>transferable</b>.</p>`,l:["linkedin","wa"]},
+ {id:"loc",chip:"Location / relocation?",k:["location","based","where","relocate","relocation","country","saudi","ksa","gcc","abroad","worldwide","remote","neom","tabuk"],
+  a:`<p>Based on the <b>NEOM project in Saudi Arabia</b>, with roots in Pakistan. Sudheer is <b>open to roles worldwide</b> and holds Saudi and Pakistani driving licences.</p>`},
+ {id:"roles",chip:"What roles does he want?",k:["looking","seeking","target","roles","role fit","opportunity","opportunities","open to","hire","hiring","vacancy"],
+  a:`<p>Sudheer is open to:</p><ul><li>Senior Executive Assistant / Executive Office roles</li><li>Board Secretary and PMO support</li><li>Logistics, Transportation, Facilities & Operations roles</li></ul>`},
+ {id:"why",chip:"Why hire Sudheer?",k:["why","hire","strength","strengths","value","best","fit","unique","different","bring","stand out"],
+  a:`<p>Three reasons managers mention most:</p><ul><li><b>Two tracks in one person</b> · executive office polish and hands-on logistics experience</li><li><b>Board-level trust</b> · a year as Secretary to a Joint Venture Board and the Deputy CEO</li><li><b>He builds systems</b> · trackers, dashboards and reports that keep leadership ahead of deadlines</li></ul>`},
+ {id:"events",chip:"VIP visits & events?",k:["vip","visit","visits","visitor","visitors","event","events","ceremony","ceremonies","tbm","breakthrough","protocol","hospitality","national day"],
+  a:`<p>Yes, regularly:</p><ul><li>TBM breakthrough ceremonies · attendee lists, security coordination, NEOM access</li><li>Senior visitor hosting, trips, drivers, hotels and meals</li><li>Company ceremonies and National Day events</li><li>Visitor inductions, HSE training and site access cards</li></ul>`},
+ {id:"license",chip:"Driving licence?",k:["licence","license","driving","drive","car"],
+  a:`<p>Yes, he holds both a <b>Saudi</b> and a <b>Pakistani</b> driving licence.</p>`},
+ {id:"salary",chip:"Salary expectations?",k:["salary","package","pay","compensation","expected","expectation","benefits","ctc"],
+  a:`<p>Sudheer prefers to discuss the package directly once he knows the role and its scope. Please reach out and he'll reply promptly.</p>`,l:["linkedin","wa"]},
+ {id:"cv",chip:"Get his CV",k:["cv","resume","résumé","download"],
+  a:`<p>His full CV is available on request. Message him and he'll send the version that fits your role (Executive or Logistics).</p>`,l:["linkedin","wa","notion"]},
+ {id:"contact",chip:"How to contact him?",k:["contact","email","phone","call","whatsapp","reach","number","mobile","message","connect"],
+  a:`<ul><li><b>Email</b> · <span id="em">khattaksudheer@gmail.com</span></li><li><b>Call (KSA)</b> · +966 53 508 2404</li><li><b>WhatsApp</b> · +92 331 5701649</li></ul>`,l:["linkedin","wa"],copy:true},
+ {id:"references",chip:"References?",k:["reference","references","referee","recommendation","recommend"],
+  a:`<p>References are available on request.</p>`,l:["linkedin"]},
+ {id:"thanks",chip:null,k:["thanks","thank you","great","nice","ok","okay","cool","awesome"],
+  a:`<p>You're welcome. If the role fits, Sudheer would be glad to talk.</p>`,l:["linkedin","wa"]},
+ {id:"hi",chip:null,k:["hi","hello","hey","salam","assalam","good morning","good evening"],
+  a:`<p>Hello! Ask me anything about Sudheer's experience, tools, certifications or availability.</p>`}
+];
+const SUGG=["intro","board","logistics","data","avail","why","contact"];
+const $=s=>document.querySelector(s);
+$("#pic").src=PHOTO;
+const thread=$("#thread"), reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s\-+]/g," ").replace(/\s+/g," ").trim()}
+function match(q){
+  const n=" "+norm(q)+" ";let best=null,score=0;
+  for(const e of KB){let s=0;for(const k of e.k){const kk=norm(k);if(!kk)continue;
+    if(kk.includes(" ")?n.includes(" "+kk+" ")||n.includes(kk):new RegExp("\\b"+kk.replace(/[-+]/g,"\\$&")+"s?\\b").test(n))s+=kk.length>4?2:1}
+    if(s>score){score=s;best=e}}
+  return score>0?best:null;
+}
+function bubble(html,me){
+  const m=document.createElement("div");m.className="msg"+(me?" me":"");
+  if(!me){const av=document.createElement("div");av.className="av";const i=new Image();i.src=PHOTO;i.alt="";av.appendChild(i);m.appendChild(av)}
+  const b=document.createElement("div");b.className="bub";b.innerHTML=html;m.appendChild(b);thread.appendChild(m);
+  m.scrollIntoView({behavior:reduce?"auto":"smooth",block:"end"});return b;
+}
+function linksHtml(e){
+  const parts=(e.l||[]).map(k=>`<a href="${L[k][1]}" target="_blank" rel="noopener">${L[k][0]} ↗</a>`);
+  if(e.copy)parts.unshift(`<button type="button" data-copy="khattaksudheer@gmail.com">Copy email</button>`);
+  return parts.length?`<div class="links">${parts.join("")}</div>`:"";
+}
+let busy=false;
+function answer(e,userText){
+  if(busy)return;busy=true;
+  bubble(userText.replace(/[<>&]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;"}[c])),true);
+  const b=bubble('<span class="typing" aria-label="typing"><span></span><span></span><span></span></span>',false);
+  const html=e?e.a+linksHtml(e):`<p>I don't have a ready answer for that one. Try one of the popular questions below, or ask Sudheer directly.</p>`+linksHtml({l:["linkedin","wa"],copy:true});
+  setTimeout(()=>{
+    b.innerHTML=html;
+    if(!reduce){b.style.opacity=0;b.style.transform="translateY(6px)";b.style.transition="opacity .35s,transform .35s";requestAnimationFrame(()=>{b.style.opacity=1;b.style.transform="none"})}
+    b.parentElement.scrollIntoView({behavior:reduce?"auto":"smooth",block:"end"});busy=false;
+  },reduce?100:650+Math.min(700,html.length*0.6));
+}
+thread.addEventListener("click",ev=>{const c=ev.target.closest("[data-copy]");if(!c)return;
+  const t=c.dataset.copy;const done=()=>{c.textContent="Copied ✓";setTimeout(()=>c.textContent="Copy email",1600)};
+  try{navigator.clipboard.writeText(t).then(done,()=>{const r=document.createRange();const el=document.getElementById("em");if(el){r.selectNodeContents(el);getSelection().removeAllRanges();getSelection().addRange(r)}})}catch(_){}});
+const sugg=$("#sugg");
+SUGG.forEach(id=>{const e=KB.find(x=>x.id===id);const bt=document.createElement("button");bt.type="button";bt.textContent=e.chip;bt.onclick=()=>answer(e,e.chip);sugg.appendChild(bt)});
+$("#f").addEventListener("submit",ev=>{ev.preventDefault();const v=$("#q").value.trim();if(!v)return;$("#q").value="";answer(match(v),v)});
+// Opening message
+const w=bubble(`<p>Hi, I'm Sudheer's assistant. 👋</p><p>Ask me about his <b>executive office</b> and <b>logistics</b> experience, the tools he uses, his certifications or when he can join.</p>`,false);
+</script>
+</body></html>
