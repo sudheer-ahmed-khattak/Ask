@@ -98,19 +98,98 @@ const L={
   wa:["WhatsApp","https://wa.me/923315701649"]
 };
 // Knowledge base: every answer is taken from Sudheer's CV
+const DOB=new Date(1995,9,20);
+function ageNow(){const t=new Date();let a=t.getFullYear()-DOB.getFullYear();if(t.getMonth()<DOB.getMonth()||(t.getMonth()===DOB.getMonth()&&t.getDate()<DOB.getDate()))a--;return a}
+function bdayNote(){const t=new Date();const b=new Date(t.getFullYear(),9,20);const d=Math.round((b-new Date(t.getFullYear(),t.getMonth(),t.getDate()))/864e5);
+  if(d===0)return " 🎉 <b>It's his birthday today!</b>";if(d>0&&d<=14)return ` His birthday is in <b>${d} day${d>1?"s":""}</b> 🎂`;return ""}
 const KB=[
- {id:"intro",chip:"Who is Sudheer?",k:["who is","about him","about sudheer","introduce","yourself","summary","overview","tell me","sudheer","profile","background"],
+ {id:"howru",chip:null,x:["how are you","how r u","how are u","how r you","how is sudheer","how s sudheer","hows sudheer","how is he","how s he","hows he","how is sudeer","how s sudeer","how sudheer","how is he doing","how is sudheer doing","whats up","what s up","sup","how do you do","how is it going","how s it going"],
+  k:["how are you","how r u","how are u","how is sudheer","how s sudheer","hows sudheer","how is he doing","how is sudheer doing","what s up","whats up","how is it going"],
+  a:`<p>Doing great, thank you for asking! 😊</p><p>Sudheer is busy as ever in the <b>Executive Office at NEOM</b>, keeping meetings, approvals and senior visits on track. What would you like to know about him?</p>`},
+ {id:"bot",chip:null,k:["who are you","what are you","are you ai","are you a bot","are you real","are you human","real person","is this sudheer","is this ai","robot","chatbot","bot","assistant work","how do you work"],
+  a:`<p>I'm Sudheer's <b>interactive assistant</b>, a small Q&amp;A tool he built so recruiters and managers can get quick answers about his profile at any time.</p><p>All answers come from his CV. For anything personal or detailed, message him directly and he'll reply himself.</p>`,l:["linkedin","wa"]},
+ {id:"name",chip:null,k:["full name","his name","your name","what is his name","name","called","surname","last name","khattak"],
+  a:`<p>His full name is <b>Sudheer Ahmed Khattak</b>.</p>`},
+ {id:"age",chip:"How old is he?",k:["age","how old","old is he","birthday","birth day","born","date of birth","dob","birth","year of birth","bday"],
+  a:`<p>Sudheer is <span class="k">${ageNow()} years old</span>, born on <b>20 October 1995</b>.${bdayNote()}</p>`},
+ {id:"nation",chip:"Nationality?",k:["nationality","national","citizen","citizenship","passport","where is he from","where he from","from where","hometown","home town","native","origin","pakistani","belongs","which country"],
+  a:`<p>Sudheer is a <b>Pakistani national</b>, working in <b>Saudi Arabia</b> on the NEOM project. His Iqama is transferable, and he is open to roles worldwide.</p>`},
+ {id:"marital",chip:null,k:["married","marital","single","wife","spouse","family status","relationship","girlfriend","kids","children"],
+  a:`<p>Sudheer is <b>single</b>, which also makes him fully flexible for relocation and travel.</p>`},
+ {id:"hobby",chip:null,k:["hobby","hobbies","free time","spare time","interests","interest","passion","passions","enjoy","fun","outside work","weekend","cricket","reading","writing","horse","riding","sports","sport","explore","exploring"],
+  a:`<p>Outside work Sudheer enjoys:</p><ul><li>📚 <b>Reading</b>, especially <b>history</b>, and ✍️ <b>writing</b></li><li>🏏 <b>Cricket</b>, a proud supporter of the <b>Pakistan</b> team 🇵🇰</li><li>🐎 <b>Horse riding</b></li><li>✈️ <b>Travelling and exploring the world</b></li></ul><p>He also loves building things: dashboards, portfolio projects and trying new AI tools.</p>`},
+ {id:"person",chip:"What is he like?",k:["personality","character","what kind of person","type of person","what is he like","describe him","nature","attitude","work style","working style","work ethic","hardworking","hard working","reliable","honest","colleagues","managers say"],
+  a:`<p>People who work with Sudheer describe him as:</p><ul><li><b>Discreet</b> · trusted with board-level and confidential matters</li><li><b>Calm under pressure</b> · ceremonies, VIP visits and tight deadlines</li><li><b>Relentless on follow-up</b> · every action item tracked to closure</li><li><b>Organised</b> · he builds trackers and dashboards instead of relying on memory</li></ul>`},
+ {id:"pressure",chip:null,k:["pressure","stress","stressful","deadline","deadlines","multitask","multitasking","urgent","tight","busy","workload","prioritise","prioritize"],
+  a:`<p>Pressure is normal in his work: board meetings, NEOM correspondence deadlines and TBM ceremonies with senior guests. He handles it by <b>planning early</b>, keeping a <b>live action tracker</b>, and giving leadership a clear daily agenda so nothing slips.</p>`},
+ {id:"confid",chip:null,k:["confidential","confidentiality","discreet","discretion","sensitive","trust","trusted","privacy","secret"],
+  a:`<p>Yes. As <b>Secretary to the JV Board and the Deputy CEO</b> he handled board papers, resolutions and confidential correspondence, and today he manages sensitive approvals and contracts for senior leadership. Discretion is central to his role.</p>`},
+ {id:"team",chip:null,k:["team","teamwork","team player","collaborate","collaboration","cooperate","colleague","work with others","people skills","communication","communicate","interpersonal"],
+  a:`<p>Sudheer works across every department: HR, procurement, logistics, finance, document control and site teams, plus NEOM as the client. His job is to keep everyone aligned, so <b>clear communication and follow-up</b> are his daily tools.</p>`},
+ {id:"manage",chip:null,k:["team size","how big team","how many people","largest team","biggest team","people managed","manage team","managed team","managed a team","manage a team","led a team","managed staff","manage people","managed people","leadership","leader","lead a team","supervise","supervised","supervisor","staff","subordinates","people management","direct reports","manager experience"],
+  a:`<p>Yes. His largest team was <span class="k">around 350 people</span> in logistics.</p><ul><li><b>Operations Manager</b> (Pakistan) · branch staff, drivers, delivery fleet, plus security guards at a staff accommodation building</li><li><b>Founder of Alpha BPO</b> · built and led a team of call-centre agents</li><li>At LAJV · coordinates management drivers, logistics records and service providers</li></ul>`},
+ {id:"achieve",chip:"Key achievements?",k:["achievement","achievements","accomplishment","accomplishments","proud","biggest","success","successes","highlight","highlights","milestone","promotion","promoted","growth"],
+  a:`<ul><li><b>Four roles in about two years</b> at LAJV: Transportation & Facilities → Lead Administrative Specialist → JV Board & Deputy CEO Secretary → Senior Executive Assistant</li><li>Supported transport and facilities for a <b>4,000+ workforce</b> on a NEOM giga-project</li><li>Ran a pharmaceutical distribution branch as <b>Operations Manager</b></li><li><b>Founded his own business</b>, a US outbound call centre, in 2015</li><li>Built a portfolio of <b>25 professional projects</b></li></ul>`,l:["notion"]},
+ {id:"weak",chip:null,k:["weakness","weaknesses","weak point","improve","improvement","area of improvement","learning","learn","developing"],
+  a:`<p>Sudheer is always building new skills. Right now he is deepening his <b>SQL</b> and <b>data automation</b> skills to make reporting even faster. He's happy to discuss this openly in an interview.</p>`},
+ {id:"future",chip:null,k:["future","goal","goals","5 years","five years","career plan","ambition","ambitions","aspiration","long term","where do you see","next step","growth plan"],
+  a:`<p>His goal is to grow into a <b>senior executive office / chief-of-staff</b> or <b>operations and logistics leadership</b> role, where he can combine executive support with systems that make large organisations run smoothly.</p>`},
+ {id:"leave",chip:null,k:["why leaving","leaving","why leave","why change","change job","reason for change","reason for leaving","switch","quit","resign","job change"],
+  a:`<p>Sudheer is looking for his <b>next step in growth</b>: a role with broader responsibility where his executive and logistics experience can add more value. He's happy to discuss the details directly.</p>`,l:["linkedin","wa"]},
+ {id:"interview",chip:null,k:["interview","schedule a call","set up a call","book a call","meet him","talk to him","speak to him","zoom","teams call","video call","online meeting","shortlist","shortlisted"],
+  a:`<p>He'd be glad to! Sudheer is available for <b>online or in-person interviews</b> at short notice. Send him a message with a suitable time.</p>`,l:["linkedin","wa"],copy:true},
+ {id:"worktype",chip:null,k:["part time","part-time","freelance","temporary","contract role","contract basis","fixed term","full time","full-time","permanent","remote","remotely","work remote","work from home","hybrid","onsite","on site","shift","overtime","night shift"],
+  a:`<p>Sudheer is mainly looking for <b>full-time roles</b>, on site or hybrid, in Saudi Arabia, the GCC or anywhere worldwide. He is used to <b>long project hours and site work</b>, and is open to discussing contract or remote options too.</p>`},
+ {id:"travel",chip:null,k:["willing to travel","travel for work","business travel","can he travel","travel abroad","travelling","traveling","relocate abroad"],
+  a:`<p>Yes. He's single, holds Saudi and Pakistani driving licences, and is <b>fully open to travel and relocation</b> worldwide.</p>`},
+ {id:"hr",chip:null,k:["hr","human resources","recruitment","manpower","payroll","onboarding","evaluation","appraisal","personnel","workforce planning"],
+  a:`<p>He has solid HR-side exposure:</p><ul><li>UniAthena / CIQ UK courses in <b>International HRM</b>, <b>HR Operations</b> and <b>Manpower Planning & Recruitment</b></li><li>Handled <b>employee evaluation forms</b> with HR at LAJV</li><li>Visitor inductions, induction cards and site access for new arrivals</li><li>Manpower trackers among his portfolio projects</li></ul>`},
+ {id:"proc",chip:null,k:["procurement","purchase","purchasing","purchase order","po","pos","supplier","suppliers","vendor","vendors","supply chain","buying","rfq","quotation"],
+  a:`<p>Yes. He processes <b>PR/PO approvals</b>, supplier contracts and IPCs through Oracle Fusion and DocuSign, verified rental and supplier invoices in logistics, and holds diplomas in <b>procurement & supply chain</b>.</p>`},
+ {id:"safety",chip:null,k:["safety","hse","ehs","health and safety","fire","emergency","ppe","evacuation"],
+  a:`<p>He is a certified <b>Fire Warden Level 2</b> (IBHSE-US, valid to April 2027), holds an EHS diploma, and has run visitor inductions, HSE training, PPE and site-access arrangements on the NEOM project.</p>`},
+ {id:"ai",chip:null,k:["ai tools","artificial intelligence","chatgpt","claude","copilot","gemini","automation","automate","python"],
+  a:`<p>Yes, he uses <b>AI tools</b> every day for drafting, summarising and analysis, and builds automation with Excel VBA and simple Python scripts, like an invoice-reconciliation demo that flags over-billing and duplicates.</p>`},
+ {id:"links",chip:null,k:["linkedin","notion","website","links","social","online profile","profile link","github link"],
+  a:`<p>Here are all his profiles in one place:</p>`,l:["notion","linkedin","github","site"]},
+ {id:"neom",chip:null,k:["what is neom","about neom","neom project","giga project","giga-project","tunnel","tbm","the line"],
+  a:`<p><b>NEOM</b> is Saudi Arabia's flagship giga-project. Sudheer works for <b>Al-Ayuni Limak (LAJV)</b>, a joint venture of Al-Ayuni (KSA) and Limak (Türkiye), on a NEOM <b>infrastructure / tunnelling project</b>, where he also organises TBM breakthrough ceremonies.</p>`},
+ {id:"religion",chip:null,k:["religion","muslim","religious","pray","prayer","caste","politics","political"],
+  a:`<p>That's a personal matter. I can only answer professional questions about Sudheer's experience, skills and availability.</p>`},
+ {id:"joke",chip:null,k:["tell me a joke","joke","funny","make me laugh","bored"],
+  a:`<p>Why did the executive assistant bring a ladder to work? 🪜</p><p>To help the boss reach the <b>next level</b>. That's Sudheer's job description in one line! 😄</p>`},
+ {id:"cricket",chip:null,k:["cricket team","favourite team","favorite team","which team","cricketer","favourite player","favorite player","cricket fan","psl"],
+  a:`<p>🏏 Pakistan, all the way! 🇵🇰 Cricket is one of Sudheer's favourite hobbies.</p>`},
+ {id:"books",chip:null,k:["books","book","reading","read","favourite book","favorite book","author","novel","history"],
+  a:`<p>Sudheer enjoys reading, especially <b>history</b>. He also likes to write, which shows in his clear reports, MOMs and correspondence.</p>`},
+ {id:"typing",chip:null,k:["typing","typing speed","type fast","wpm","words per minute","keyboard"],
+  a:`<p>His typing is <b>fast and accurate</b>, which is essential for live MOMs, correspondence and quick turnaround on executive documents.</p>`},
+ {id:"strong",chip:null,k:["strongest skill","best skill","strongest","main strength","greatest strength","quick learner","fast learner","decision","decisions","decision maker","decision making"],
+  a:`<p>His two strongest qualities:</p><ul><li>⚡ <b>Quick learner</b> · new systems like Oracle Fusion, Aconex and Power BI picked up on the job</li><li>🎯 <b>Decision maker</b> · comfortable making the call on logistics, events and priorities when leadership is busy</li></ul>`},
+ {id:"likes",chip:null,k:["enjoy most","like most","love about","favourite part","favorite part","what does he like","passionate about","motivates","motivation","motivated"],
+  a:`<p>He enjoys <b>all three sides</b> of his work:</p><ul><li>👥 <b>Managing people</b> · drivers, teams and service providers</li><li>🗓️ <b>Planning</b> · agendas, trackers and keeping leadership a step ahead</li><li>🎉 <b>Events</b> · TBM breakthrough ceremonies, VIP visits and National Day celebrations</li></ul>`},
+ {id:"msoffice",chip:null,k:["ms office","microsoft office","office 365","microsoft 365","word","outlook","powerpoint","computer skills","computer","it skills"],
+  a:`<p>Sudheer is an <b>advanced</b> Microsoft Office user: <b>Excel</b> (formulas, pivots, VBA, dashboards), <b>Word</b>, <b>PowerPoint</b> executive decks, <b>Outlook</b> calendar management, <b>Teams</b> and <b>SharePoint</b>.</p>`},
+ {id:"meet",chip:null,k:["how many meetings","meetings per day","daily meetings","meetings a day","moms per day","minutes of meeting","mom","moms","meeting minutes"],
+  a:`<p>On average he handles <span class="k">2 meetings a day</span> with leadership, from agenda to MOM and follow-up of every action item.</p>`},
+ {id:"industry",chip:null,k:["industry","industries","sector","sectors","which company","type of company","kind of company","construction","oil and gas","oil gas","government","semi government","field","domain"],
+  a:`<p>Sudheer is open to <b>all industries</b>: construction &amp; infrastructure, oil &amp; gas, hospitality, logistics, government and corporate offices. His skills transfer anywhere a leader needs a well-run office or smooth operations.</p>`},
+ {id:"saudi",chip:null,k:["saudi experience","years in saudi","how long in saudi","since when in saudi","time in saudi","ksa experience","gulf experience","gcc experience","middle east experience","local experience","when came to saudi"],
+  a:`<p>Sudheer has been in <b>Saudi Arabia since July 2024</b>, now <span class="k">${(()=>{const t=new Date();const m=(t.getFullYear()-2024)*12+t.getMonth()-6;return Math.floor(m/12)+"+ years"})()}</span>, all on the NEOM giga-project with LAJV.</p>`},
+ {id:"bye",chip:null,k:["bye","goodbye","good bye","see you","take care","later","good night","allah hafiz","khuda hafiz"],
+  a:`<p>Thank you for visiting! 👋 If the role fits, Sudheer would be glad to hear from you.</p>`,l:["linkedin","wa"]},
+ {id:"intro",chip:"Who is Sudheer?",x:["sudheer","sudheer ahmed","sudheer khattak","sudheer ahmed khattak","sudeer","sudhir","him","he"],k:["who is","about him","about sudheer","introduce","yourself","summary","overview","tell me","background","more about"],
   a:`<p>Sudheer is a <b>Senior Executive Assistant</b> with <span class="k">11+ years</span> across executive offices, board secretariats and large-scale operations in <b>Saudi Arabia and Pakistan</b>.</p><p>Today he works in the <b>Management / Executive Office</b> of Al-Ayuni Limak (LAJV) on a NEOM infrastructure project. Before that he was <b>Secretary to the Joint Venture Board and the Deputy CEO</b>, and Lead Administrative Specialist in Logistics &amp; Operations.</p>`,l:["notion","linkedin"]},
- {id:"current",chip:"Current role?",k:["current","now","present","job","role","position","today","working","lajv","al-ayuni","limak"],
+ {id:"current",chip:"Current role?",k:["current","now","present","job","role","position","today","working","lajv","al-ayuni","limak","company","current company","employer","where does he work","works at","work at","working at","organization","organisation"],
   a:`<p><b>Senior Executive Assistant</b>, Al-Ayuni Limak Contracting (LAJV), Management Department, NEOM infrastructure project (Jan 2026 – present).</p><ul><li>Right hand to senior leadership (PD &amp; PM) in the Management / Executive Office</li><li>Meetings, MOMs and action follow-up</li><li>Approvals through Oracle Fusion and DocuSign (contracts, IPCs, LCs)</li><li>Aconex correspondence with NEOM</li><li>KPI dashboards, management drivers and trips, senior visitors and TBM breakthrough ceremonies</li></ul>`},
- {id:"years",chip:"Years of experience?",k:["years","how long","how many years","total experience","seniority","career history","timeline"],
+ {id:"years",chip:"Years of experience?",k:["experience","years","how long","how many years","total experience","seniority","career history","timeline"],
   a:`<p><span class="k">11+ years</span> in total:</p><ul><li><b>2026 – now</b> · Senior Executive Assistant, LAJV (NEOM)</li><li><b>2025</b> · JV Board & Deputy CEO Secretary, LAJV</li><li><b>2024</b> · Lead Administrative Specialist (Logistics &amp; Operations) and Transportation & Facilities Administrator, LAJV</li><li><b>2018 – 2024</b> · Branch Coordinator → Operations Manager, pharmaceutical distribution, Pakistan</li><li><b>2015 – 2017</b> · Founder & Operations Manager, US outbound call centre</li></ul>`},
  {id:"board",chip:"Board secretary experience?",k:["board","secretary","secretariat","deputy ceo","ceo","resolution","governance","minutes","jv board","joint venture"],
   a:`<p>Throughout 2025 Sudheer was <b>Secretary to the Joint Venture Board and the Deputy CEO</b> at LAJV.</p><ul><li>Board papers, meeting calendar and MOMs</li><li>Resolutions and follow-up of open actions</li><li>Confidential correspondence and DocuSign sign-offs</li><li>Company ceremonies, National Day events and staff engagement</li><li>Visitor inductions, HSE training, induction cards and site access</li></ul>`},
  {id:"exec",chip:"Executive support skills?",k:["executive","assistant","ea","pa","calendar","diary","travel","meeting","mom","schedule","support","office","priorities","agenda"],
   a:`<p>Day to day, Sudheer runs the executive office end to end:</p><ul><li>Calendar, priorities and daily agenda for leadership</li><li>Meetings, agendas, MOMs and action trackers</li><li>Approvals and contract workflows in Oracle Fusion and DocuSign</li><li>Trips, drivers, hotels and senior visitor hospitality</li><li>VIP visits and TBM breakthrough ceremonies (guest lists, security, NEOM access)</li></ul>`},
- {id:"approvals",chip:"Oracle / DocuSign / Aconex?",k:["oracle","fusion","docusign","aconex","approval","approvals","erp","ipc","lc","contract","correspondence","document control"],
-  a:`<p>Yes, all three are part of his daily work:</p><ul><li><b>Oracle Cloud / Fusion</b> · approval workflows</li><li><b>DocuSign</b> · contracts, IPCs and letters of credit</li><li><b>Aconex</b> · formal correspondence with NEOM as the employer</li></ul>`},
+ {id:"approvals",chip:"Oracle / DocuSign / Aconex?",k:["how many approvals","approvals volume","number of approvals","oracle","fusion","docusign","aconex","approval","approvals","erp","ipc","lc","contract","correspondence","document control"],
+  a:`<p>Yes, all three are part of his daily work. He handles <span class="k">250+ approvals</span> a month.</p><ul><li><b>Oracle Cloud / Fusion</b> · approval workflows</li><li><b>DocuSign</b> · contracts, IPCs and letters of credit</li><li><b>Aconex</b> · formal correspondence with NEOM as the employer</li></ul>`},
  {id:"logistics",chip:"Logistics experience?",k:["logistics","operations","supply","fleet","transport","transportation","driver","drivers","vehicle","camp","camps","accommodation","facilities","catering","laundry","housekeeping","fuel","diesel","water"],
   a:`<p>Logistics is Sudheer's second core track:</p><ul><li><b>Transportation & Facilities Administrator</b> (2024) · transport and facilities for a large project workforce: accommodation, catering, laundry and housekeeping</li><li><b>Lead Administrative Specialist, Logistics &amp; Operations</b> (2024) · delivery-note records for water, diesel, gasoline and waste; driver and equipment rental timesheets; client visit observations at camps, dining and offices</li><li><b>Pharma distribution, Pakistan</b> (2018 – 2024) · inventory, dispatch, delivery fleet and a staff accommodation building</li></ul>`},
  {id:"recon",chip:"Invoice reconciliation?",k:["invoice","invoices","reconcile","reconciliation","delivery note","timesheet","timesheets","rental","pr","payment","verify","audit"],
@@ -133,8 +212,8 @@ const KB=[
   a:`<ul><li><b>English</b> · fluent</li><li><b>Arabic</b> · intermediate</li><li><b>Urdu & Pashto</b> · native</li></ul>`},
  {id:"avail",chip:"Is he available?",k:["available","availability","notice","join","joining","start","when","immediately","iqama","transfer","transferable","visa","sponsorship"],
   a:`<p><b>Yes, available worldwide and immediately.</b></p><p>For jobs in <b>Saudi Arabia</b>, his <b>Iqama is transferable</b>.</p>`,l:["linkedin","wa"]},
- {id:"loc",chip:"Location / relocation?",k:["location","based","where","relocate","relocation","country","saudi","ksa","gcc","abroad","worldwide","remote","neom","tabuk"],
-  a:`<p>Based on the <b>NEOM project in Saudi Arabia</b>, with roots in Pakistan. Sudheer is <b>open to roles worldwide</b> and holds Saudi and Pakistani driving licences.</p>`},
+ {id:"loc",chip:"Location / relocation?",k:["prefer","preferred","which city","city","riyadh","jeddah","dammam","dubai","uae","qatar","kuwait","oman","bahrain","location","based","where","relocate","relocation","country","saudi","ksa","gcc","abroad","worldwide","remote","neom","tabuk"],
+  a:`<p>Based on the <b>NEOM project in Saudi Arabia</b>, with roots in Pakistan. Sudheer is <b>open to any city and any country</b>: Saudi Arabia, the GCC, Pakistan or anywhere worldwide, and holds Saudi and Pakistani driving licences.</p>`},
  {id:"roles",chip:"What roles does he want?",k:["looking","seeking","target","roles","role fit","opportunity","opportunities","open to","hire","hiring","vacancy"],
   a:`<p>Sudheer is open to:</p><ul><li>Senior Executive Assistant / Executive Office roles</li><li>Board Secretary and PMO support</li><li>Logistics Administration, Transportation, Facilities & Operations Specialist roles</li></ul>`},
  {id:"why",chip:"Why hire Sudheer?",k:["why","hire","strength","strengths","value","best","fit","unique","different","bring","stand out"],
@@ -153,7 +232,7 @@ const KB=[
   a:`<p>References are available on request.</p>`,l:["linkedin"]},
  {id:"thanks",chip:null,k:["thanks","thank you","great","nice","ok","okay","cool","awesome"],
   a:`<p>You're welcome. If the role fits, Sudheer would be glad to talk.</p>`,l:["linkedin","wa"]},
- {id:"hi",chip:null,k:["hi","hello","hey","salam","assalam","good morning","good evening"],
+ {id:"hi",chip:null,k:["hi","hello","hey","salam","assalam","assalamualaikum","aoa","good morning","good evening","good afternoon","hola","marhaba"],
   a:`<p>Hello! Ask me anything about Sudheer's experience, tools, certifications or availability.</p>`}
 ];
 const SUGG=["intro","board","logistics","data","avail","why","contact"];
@@ -161,13 +240,52 @@ const $=s=>document.querySelector(s);
 $("#pic").src=PHOTO;
 const thread=$("#thread"), reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s\-+]/g," ").replace(/\s+/g," ").trim()}
-function match(q){
-  const n=" "+norm(q)+" ";let best=null,score=0;
-  for(const e of KB){let s=0;for(const k of e.k){const kk=norm(k);if(!kk)continue;
-    if(kk.includes(" ")?n.includes(" "+kk+" ")||n.includes(kk):new RegExp("\\b"+kk.replace(/[-+]/g,"\\$&")+"s?\\b").test(n))s+=kk.length>4?2:1}
-    if(s>score){score=s;best=e}}
-  return score>0?best:null;
+// ---------- Smart matcher: understands meaning, word order, short forms and typos ----------
+const STOP=new Set("a an the is am are was were be been being do does did doing have has had having he his him himself she her it its this that these those i me my we our you your yours u ur r of in on at to for by with about into over under as and or but if so than then too very can could would should will shall may might must please pls plz kindly tell know let want wanna need any some much just also mr sudheer sudheers s whats what which who whom whose how hw".split(" "));
+const ABBR={u:"you",r:"are",ur:"your",y:"why",wat:"what",wht:"what",whts:"what",hw:"how",yrs:"years",yr:"years",yrz:"years",exp:"experience",expr:"experience",xp:"experience",exel:"excel",excell:"excel",xl:"excel",thx:"thanks",ty:"thanks",tnx:"thanks",thanku:"thanks",sal:"salary",cert:"certification",certs:"certifications",lic:"license",licence:"license",mgr:"manager",mgmt:"management",bday:"birthday",abt:"about",wrk:"work",qual:"qualification",edu:"education",avl:"available",avail:"available",asap:"immediately",msg:"message",no:"number",ph:"phone",mob:"mobile",cv:"cv",ksa:"saudi",kingdom:"saudi",colour:"color",organise:"organize",organised:"organized",prioritise:"prioritize"};
+const SYN={boss:["executive"],pay:["salary"],wage:["salary"],money:["salary"],earn:["salary"],package:["salary"],kid:["children"],wife:["married"],spouse:["married"],husband:["married"],old:["age"],born:["birth"],begin:["join"],start:["join"],commence:["join"],resume:["cv"],biodata:["cv"],phone:["contact"],mobile:["contact"],whatsapp:["contact"],mail:["email"],gmail:["email"],degree:["education"],graduation:["education"],college:["education"],study:["education"],trucks:["fleet"],truck:["fleet"],vehicles:["fleet"],cars:["fleet"],accomodation:["accommodation"],housing:["accommodation"],speak:["language"],skills:["skill"],country:["nationality"]};
+function stem(w){
+  if(w.length<=3)return w;let o=w;
+  if(w.endsWith("ies")&&w.length>4)w=w.slice(0,-3)+"y";
+  else if(w.endsWith("ing")&&w.length>5)w=w.slice(0,-3);
+  else if(w.endsWith("ed")&&w.length>4)w=w.slice(0,-2);
+  else if(/(ss|x|ch|sh)es$/.test(w))w=w.slice(0,-2);
+  else if(w.endsWith("s")&&!w.endsWith("ss")&&w.length>3)w=w.slice(0,-1);
+  if(w!==o&&/([b-df-hj-np-tv-z])\1$/.test(w)&&!/(ll|ss)$/.test(o.slice(0,w.length)))w=w.slice(0,-1);
+  if(w.length>4&&w.endsWith("e"))w=w.slice(0,-1);
+  return w;
 }
+function words(s){return norm(s).split(" ").filter(Boolean).map(w=>ABBR[w]||w).join(" ").split(" ")}
+function toks(s,keepStop){const out=[];for(const w of words(s)){if(!keepStop&&STOP.has(w))continue;out.push(stem(w));for(const x of (SYN[w]||[]))out.push(stem(x))}return out}
+function lev(a,b){if(Math.abs(a.length-b.length)>2)return 9;const d=[];for(let i=0;i<=a.length;i++){d[i]=[i];for(let j=1;j<=b.length;j++)d[i][j]=i?Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1)):j}return d[a.length][b.length]}
+function tokHit(t,qs){ // 1 = exact, .8 = typo / prefix, 0 = none
+  if(qs.has(t))return 1;
+  for(const q of qs){
+    if(t.length>=4&&q.length>=4&&(q.startsWith(t)||t.startsWith(q)))return .85;
+    if(t.length>=5&&q.length>=5){const L=lev(t,q);if(L<=1||(L<=2&&t.length>=8))return .8}
+  }return 0;
+}
+// build index once
+const IDX=KB.map(e=>{const seen=new Set();return {e,ph:e.k.map(k=>{const t=toks(k);return t.length?{t,raw:null}:{t:[],raw:" "+words(k).join(" ")+" "}}).filter(p=>{const key=p.raw||p.t.join("|");if(seen.has(key))return false;seen.add(key);return true})}});
+const DF={};IDX.forEach(({ph})=>{const seen=new Set();ph.forEach(p=>p.t.forEach(t=>seen.add(t)));seen.forEach(t=>DF[t]=(DF[t]||0)+1)});
+const idf=t=>1+Math.log(KB.length/(DF[t]||1));
+function scoreAll(q){
+  const raw=" "+words(q).join(" ")+" ",qs=new Set(toks(q));
+  return IDX.map(({e,ph})=>{const got=[];
+    for(const p of ph){
+      if(p.raw){if(raw.includes(p.raw))got.push(2.5);continue}
+      let hit=0,w=0;for(const t of p.t){const h=tokHit(t,qs);if(!h){hit=-1;break}hit+=h;w+=idf(t)*h}
+      if(hit>0)got.push(w*(p.t.length>1?1.4:1));
+    }
+    got.sort((a,b)=>b-a);let s=got[0]||0;for(let i=1;i<Math.min(4,got.length);i++)s+=got[i]*0.15;
+    return {e,s}}).sort((a,b)=>b.s-a.s);
+}
+function match(q){
+  const nq=words(q).join(" ").replace(/^(and|so|ok|okay|hey|hi|hello) /,"").replace(/ (please|pls|plz)$/,"").trim();
+  for(const e of KB)if(e.x&&e.x.includes(nq))return e;
+  const r=scoreAll(q);return r[0].s>=1.2?r[0].e:null;
+}
+function nearest(q){return scoreAll(q).filter(x=>x.s>0&&x.e.chip).slice(0,3).map(x=>x.e)}
 function bubble(html,me){
   const m=document.createElement("div");m.className="msg"+(me?" me":"");
   if(!me){const av=document.createElement("div");av.className="av";const i=new Image();i.src=PHOTO;i.alt="";av.appendChild(i);m.appendChild(av)}
@@ -184,14 +302,16 @@ function answer(e,userText){
   if(busy)return;busy=true;
   bubble(userText.replace(/[<>&]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;"}[c])),true);
   const b=bubble('<span class="typing" aria-label="typing"><span></span><span></span><span></span></span>',false);
-  const html=e?e.a+linksHtml(e):`<p>I don't have a ready answer for that one. Try one of the popular questions below, or ask Sudheer directly.</p>`+linksHtml({l:["linkedin","wa"],copy:true});
+  let near=e?[]:nearest(userText);if(!e&&near.length<3)near=near.concat(SUGG.map(id=>KB.find(x=>x.id===id)).filter(x=>!near.includes(x))).slice(0,3);
+  const html=e?e.a+linksHtml(e):`<p>I'm not sure I understood that one. Did you mean:</p><div class="links">${near.map(n=>`<button type="button" data-ask="${n.id}">${n.chip}</button>`).join("")}</div><p style="margin-top:8px">Or ask Sudheer directly:</p>`+linksHtml({l:["linkedin","wa"],copy:true});
   setTimeout(()=>{
     b.innerHTML=html;
     if(!reduce){b.style.opacity=0;b.style.transform="translateY(6px)";b.style.transition="opacity .35s,transform .35s";requestAnimationFrame(()=>{b.style.opacity=1;b.style.transform="none"})}
     b.parentElement.scrollIntoView({behavior:reduce?"auto":"smooth",block:"end"});busy=false;
   },reduce?100:650+Math.min(700,html.length*0.6));
 }
-thread.addEventListener("click",ev=>{const c=ev.target.closest("[data-copy]");if(!c)return;
+thread.addEventListener("click",ev=>{const a=ev.target.closest("[data-ask]");if(a){const e=KB.find(x=>x.id===a.dataset.ask);if(e)answer(e,e.chip);return}
+  const c=ev.target.closest("[data-copy]");if(!c)return;
   const t=c.dataset.copy;const done=()=>{c.textContent="Copied ✓";setTimeout(()=>c.textContent="Copy email",1600)};
   try{navigator.clipboard.writeText(t).then(done,()=>{const r=document.createRange();const el=document.getElementById("em");if(el){r.selectNodeContents(el);getSelection().removeAllRanges();getSelection().addRange(r)}})}catch(_){}});
 const sugg=$("#sugg");
